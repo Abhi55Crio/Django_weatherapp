@@ -10,9 +10,9 @@ def weather_view(request):
     
     # 1. Look up coordinates using Open-Meteo Geocoding API
     geo_url = f"https://geocoding-api.open-meteo.com/v1/search?name={city_name}&count=1"
-    
+    headers = {'User-Agent': 'DjangoWeatherApp/1.0 (contact@example.com)'}
     try:
-        geo_response = requests.get(geo_url)
+        geo_response = requests.get(geo_url,headers=headers, timeout=5)
         geo_data = geo_response.json()
         
         if 'results' in geo_data and len(geo_data['results']) > 0:
@@ -25,7 +25,7 @@ def weather_view(request):
             
             # 2. Fetch the weather forecast using the retrieved coordinates
             weather_url = f"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&current_weather=true"
-            weather_response = requests.get(weather_url)
+            weather_response = requests.get(weather_url,headers=headers, timeout=5)
             
             if weather_response.status_code == 200:
                 weather_data = weather_response.json().get('current_weather')
