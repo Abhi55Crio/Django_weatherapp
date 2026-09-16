@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather by City</title>
+</head>
+<body>
+    <h1>Weather Forecast Search</h1>
+    
+    <!-- Search Form -->
+    <form method="get" action="">
+        <input type="text" name="city" value="{{ city }}" placeholder="Enter city name..." required>
+        <button type="submit">Search</button>
+    </form>
+    
+    <hr>
+    
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    
+    {% if weather %}
+        <h2>Current Weather for {{ display_name }}</h2>
+        <ul>
+            <li><strong>Temperature:</strong> {{ weather.temperature }}°C</li>
+            <li><strong>Wind Speed:</strong> {{ weather.windspeed }} km/h</li>
+            <li><strong>Wind Direction:</strong> {{ weather.winddirection }}°</li>
+        </ul>
+    {% endif %}
+</body>
+</html>
