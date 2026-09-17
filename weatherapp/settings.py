@@ -26,9 +26,7 @@ SECRET_KEY = 'django-insecure-#&*q!8o1#879go2i&ev6u9w53_t_yxjx(dn$^vg&dy_1bms5*2
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    'django-weatherapp-ouso.onrender.com',
-    'localhost',
-    '127.0.0.1',
+   '*'
 ]
 
 
